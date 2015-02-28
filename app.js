@@ -34,6 +34,12 @@ app.use(session({
 }));
 app.use(logger('combined'));
 
+app.use(function(req, res, next) {
+    res.locals.flash = req.session.flash;
+    delete req.session.flash;
+    next();
+});
+
 var auth = require('./lib/auth');
 auth.initialize(app);
 auth.registerRoutes(app);
