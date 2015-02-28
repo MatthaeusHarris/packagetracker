@@ -46,6 +46,7 @@ auth.registerRoutes(app);
 
 app.use(require('./routes/index'));
 app.use(require('./routes/user'));
+app.use(require('./routes/package'));
 
 app.use(function(req, res) {
     res.status(404);

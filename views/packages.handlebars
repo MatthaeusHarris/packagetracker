@@ -1,0 +1,16 @@
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>Carrier</th>
+        <th>Description</th>
+        <th>Tracking Number</th>
+        <th>Delivery Date</th>
+    </tr>
+    {{#each packages}}
+        <tr>
+            <td>{{carrier}}</td>
+            <td>{{description}}</td>
+            <td>{{trackingNumber}}</td>
+            <td>{{status.deliveryDate}}</td>
+        </tr>
+    {{/each}}
+</table>

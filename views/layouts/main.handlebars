@@ -35,10 +35,12 @@
         </div>
     </nav>
     {{#if flash}}
-        <div class="alert alert-dismissable alert-{{flash.type}}">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>{{flash.intro}}</strong> {{{flash.message}}}
-        </div>
+        {{#each flash}}
+            <div class="alert alert-dismissable alert-{{type}}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{intro}}</strong> {{{message}}}
+            </div>
+        {{/each}}
     {{/if}}
     <div class="container">
         <div class="starter-template">
