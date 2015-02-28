@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var credentials = require('./credentials');
 var session = require('express-session');
+var bodyParser = require('body-parser');
 
 var uri = 'mongodb://localhost/packagetracker';
 mongoose.connect(uri);
@@ -30,8 +31,14 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser(credentials.cookieSecret));
 app.use(session({
-    secret: credentials.cookieSecret
+    secret: credentials.cookieSecret,
+    saveUninitialized: true,
+    resave: true
 }));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(logger('combined'));
 
 app.use(function(req, res, next) {

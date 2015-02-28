@@ -20,15 +20,64 @@ router.get('/packages', auth.ensureAuthenticated, function(req, res) {
             });
             res.redirect('/');
         } else {
-            console.log(req.accepts('json.html'));
             if( req.xhr || req.accepts('json,html') === 'json') {
                 res.json(data);
             } else {
-                res.render('packages', {packages: data});
+                res.render('packages', {packages: data, csrf: 'blarg'});
             }
         }
     });
 
+});
+
+router.post('/package', auth.ensureAuthenticated, function(req, res) {
+    var package = new Package({
+        carrier: req.body.carrier,
+        description: req.body.description,
+        trackingNumber: req.body.trackingNumber,
+        userId: req.user.authId
+    });
+    package.save(function(err, data) {
+        if (err) {
+            flash(req, {
+                type: 'error',
+                intro: 'Package',
+                message: err
+            });
+        } else {
+            flash(req, {
+                type: 'info',
+                intro: 'Package',
+                message: 'saved'
+            });
+        }
+        res.redirect(303, '/packages');
+    });
+});
+
+router.delete('/package/:id', auth.ensureAuthenticated, function(req, res) {
+    var query = {
+        _id: req.params.id
+    };
+    Package.find(query).remove(function(err, data) {
+        if (req.xhr || req.accepts('json,html') === 'json') {
+            if (err) {
+                res.status(500);
+                res.json({error: err});
+            } else {
+                res.json({status: 'ok'});
+            }
+        } else {
+            if (err) {
+                flash(req, {
+                    type: 'error',
+                    intro: 'Package',
+                    message: err
+                });
+            }
+            res.redirect(303, '/packages');
+        }
+    });
 });
 
 module.exports = router;

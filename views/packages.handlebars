@@ -1,9 +1,49 @@
+<form class="form-horizontal" role="form" action="/package" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrf}}" />
+    <div class="form-group">
+        <label for="carrier" class="col-sm-2 control-label">
+            Carrier
+        </label>
+        <div class="col-sm-4">
+            <select class="form-control" id="carrier" name="carrier">
+                <option value="UPS">UPS</option>
+                <option value="USPS">USPS</option>
+                <option value="FedEx">FedEx</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="trackingNumber" class="col-sm-2 control-label">
+            Tracking Number
+        </label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="trackingNumber" name="trackingNumber" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="col-sm-2 control-label">
+            Description
+        </label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="description" name="description" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-default">Add</button>
+        </div>
+    </div>
+</form>
+
 <table class="table table-striped table-bordered table-hover">
     <tr>
         <th>Carrier</th>
         <th>Description</th>
         <th>Tracking Number</th>
         <th>Delivery Date</th>
+        <th>&nbsp;</th>
     </tr>
     {{#each packages}}
         <tr>
@@ -11,6 +51,36 @@
             <td>{{description}}</td>
             <td>{{trackingNumber}}</td>
             <td>{{status.deliveryDate}}</td>
+            <td>
+                <a class="btn btn-danger remove-package-button" href="#" id="{{_id}}">
+                    remove
+                </a>
+            </td>
         </tr>
     {{/each}}
 </table>
+
+{{#section 'jquery'}}
+    <script>
+        $(document).ready(function() {
+            $('.remove-package-button').on('click', function(event) {
+                event.preventDefault();
+                //alert('Deleting ' + this.id);
+                var row = $(this).closest('tr');
+                $.ajax({
+                    url: '/package/' + this.id,
+                    method: 'DELETE',
+                    success: function(data) {
+                        row.detach();
+                    },
+                    failure: function(data) {
+                        $('.navbar').after('<div class="alert alert-dismissable alert-error"> \
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> \
+                            <strong>Package</strong> Delete failed: ' + data.error + ' \
+                        </div>');
+                    }
+                })
+            });
+        });
+    </script>
+{{/section}}
