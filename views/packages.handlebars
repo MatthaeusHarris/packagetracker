@@ -49,11 +49,11 @@
         <tr>
             <td>{{carrier}}</td>
             <td>{{description}}</td>
-            <td>{{trackingNumber}}</td>
+            <td><a href="{{trackingLink}}">{{trackingNumber}}</a></td>
             <td>{{status.deliveryDate}}</td>
             <td>
                 <a class="btn btn-danger remove-package-button" href="#" id="{{_id}}">
-                    remove
+                    &times;
                 </a>
             </td>
         </tr>

@@ -6,6 +6,7 @@ var router = express.Router();
 var auth = require('../lib/auth');
 var Package = require('../models/package');
 var flash = require('../lib/flash');
+var packageUtils = require('../lib/package');
 
 router.get('/packages', auth.ensureAuthenticated, function(req, res) {
     var query = {
@@ -23,6 +24,9 @@ router.get('/packages', auth.ensureAuthenticated, function(req, res) {
             if( req.xhr || req.accepts('json,html') === 'json') {
                 res.json(data);
             } else {
+                for(var package in data) {
+                    data[package].trackingLink = packageUtils.buildTrackingLink(data[package]);
+                }
                 res.render('packages', {packages: data, csrf: 'blarg'});
             }
         }
