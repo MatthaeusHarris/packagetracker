@@ -11,11 +11,28 @@ var packageSchema = mongoose.Schema({
     userId: String,
     status: {
         deliveryDate: Date,
+        delivered: Boolean,
         eventList: [
             String
         ]
-    }
+    },
+    timestamps: {
+        created: Date,
+        nextUpdate: Date,
+        lastUpdated: Date
+    },
+    flags: {
+        update: Boolean,
+        hidden: Boolean
+    },
+    lastResponse: Object
 });
+
+packageSchema.index({"carrier": 1});
+packageSchema.index({"userId": 1});
+packageSchema.index({"timestamps.nextUpdate": 1});
+packageSchema.index({"flags.update": 1});
+packageSchema.index({"flags.hidden": 1});
 
 var Package = mongoose.model('Package', packageSchema);
 module.exports = Package;

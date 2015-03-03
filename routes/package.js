@@ -35,33 +35,64 @@ router.get('/packages', auth.ensureAuthenticated, function(req, res) {
 });
 
 router.post('/package', auth.ensureAuthenticated, function(req, res) {
+    var now = new Date();
     var package = new Package({
-        carrier: req.body.carrier,
+        carrier: req.body.carrier.toLowerCase(),
         description: req.body.description,
         trackingNumber: req.body.trackingNumber,
-        userId: req.user.authId
+        userId: req.user.authId,
+        timestamps: {
+            created: now.getTime(),
+            nextUpdate: now.setHours(now.getHours() + 3),
+            lastUpdated: now.getTime()
+        },
+        status: {
+            delivered: false
+        },
+        flags: {
+            hidden: false,
+            update: true
+        }
     });
     package.save(function(err, data) {
         if (err) {
             flash(req, {
                 type: 'error',
                 intro: 'Package',
-                message: err
+                message: JSON.stringify(err)
             });
+            console.log(err);
+            res.redirect(303, '/packages');
         } else {
             flash(req, {
                 type: 'info',
                 intro: 'Package',
                 message: 'saved'
             });
+            packageUtils.updatePackage(package, function(err, data) {
+                if (err) {
+                    flash(req, {
+                        type: 'error',
+                        intro: 'Error retrieving package status',
+                        message: err
+                    });
+                } else {
+                    flash(req, {
+                        type: 'info',
+                        intro: 'Package status',
+                        message: 'updated'
+                    });
+                }
+                res.redirect(303, '/packages');
+            });
         }
-        res.redirect(303, '/packages');
     });
 });
 
 router.delete('/package/:id', auth.ensureAuthenticated, function(req, res) {
     var query = {
-        _id: req.params.id
+        _id: req.params.id,
+        userId: req.user.authId
     };
     Package.find(query).remove(function(err, data) {
         if (req.xhr || req.accepts('json,html') === 'json') {
@@ -80,6 +111,22 @@ router.delete('/package/:id', auth.ensureAuthenticated, function(req, res) {
                 });
             }
             res.redirect(303, '/packages');
+        }
+    });
+});
+
+router.get('/package/:id', auth.ensureAuthenticated, function(req, res) {
+    var query = {
+        userId: req.user.authId,
+        _id: req.params.id
+    };
+    Package.findOne(query, function(err, data) {
+        if (err) {
+            res.render('500', {error: err});
+        } else {
+            res.header('content-type', 'text/plain');
+            res.send(JSON.stringify(data, null, '    '));
+            res.end();
         }
     });
 });

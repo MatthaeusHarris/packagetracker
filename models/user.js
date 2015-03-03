@@ -12,5 +12,8 @@ var userSchema = mongoose.Schema({
     created: Date
 });
 
+userSchema.index({authId: 1});
+userSchema.index({email: 1});
+
 var User = mongoose.model('User', userSchema);
 module.exports = User;

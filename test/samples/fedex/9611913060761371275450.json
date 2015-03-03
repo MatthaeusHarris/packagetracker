@@ -1,0 +1,165 @@
+{
+  "HighestSeverity": "SUCCESS",
+  "Notifications": [
+    {
+      "Severity": "SUCCESS",
+      "Source": "trck",
+      "Code": "0",
+      "Message": "Request was successfully processed.",
+      "LocalizedMessage": "Request was successfully processed."
+    }
+  ],
+  "Version": {
+    "ServiceId": "trck",
+    "Major": 9,
+    "Intermediate": 1,
+    "Minor": 0
+  },
+  "CompletedTrackDetails": [
+    {
+      "HighestSeverity": "SUCCESS",
+      "Notifications": [
+        {
+          "Severity": "SUCCESS",
+          "Source": "trck",
+          "Code": "0",
+          "Message": "Request was successfully processed.",
+          "LocalizedMessage": "Request was successfully processed."
+        }
+      ],
+      "DuplicateWaybill": false,
+      "MoreData": false,
+      "TrackDetailsCount": "0",
+      "TrackDetails": [
+        {
+          "Notification": {
+            "Severity": "SUCCESS",
+            "Source": "trck",
+            "Code": "0",
+            "Message": "Request was successfully processed.",
+            "LocalizedMessage": "Request was successfully processed."
+          },
+          "TrackingNumber": "9611913060761371275450",
+          "Barcode": {
+            "Type": "USPS",
+            "Value": "420941079261299998731320864206"
+          },
+          "TrackingNumberUniqueIdentifier": "12015~060761371275450~FDEG",
+          "StatusDetail": {
+            "CreationTime": "2015-03-02T00:00:00.000Z",
+            "Code": "DL",
+            "Description": "Delivered",
+            "Location": {
+              "City": "SAN FRANCISCO",
+              "StateOrProvinceCode": "CA",
+              "CountryCode": "US",
+              "CountryName": "United States",
+              "Residential": false
+            },
+            "AncillaryDetails": [
+              {
+                "Reason": "A5",
+                "ReasonDescription": "Package delivered by U.S. Postal Service to addressee"
+              }
+            ]
+          },
+          "ServiceCommitMessage": "U.S. Postal Service delivered this shipment.",
+          "DestinationServiceArea": "USPSDELIVERED",
+          "CarrierCode": "FXSP",
+          "OperatingCompanyOrCarrierDescription": "FedEx SmartPost",
+          "OtherIdentifiers": [
+            {
+              "PackageIdentifier": {
+                "Type": "CUSTOMER_REFERENCE",
+                "Value": "X00757260001"
+              }
+            }
+          ],
+          "Service": {
+            "Type": "SMART_POST",
+            "Description": "FedEx SmartPost",
+            "ShortDescription": "SP"
+          },
+          "PackageWeight": {
+            "Units": "LB",
+            "Value": "4.0"
+          },
+          "PackageDimensions": {
+            "Length": "17",
+            "Width": "13",
+            "Height": "7",
+            "Units": "IN"
+          },
+          "Packaging": "Package",
+          "PackagingType": "YOUR_PACKAGING",
+          "PackageSequenceNumber": "1",
+          "PackageCount": "1",
+          "ShipperAddress": {
+            "City": "NILES",
+            "StateOrProvinceCode": "IL",
+            "CountryCode": "US",
+            "CountryName": "United States",
+            "Residential": false
+          },
+          "ShipTimestamp": "2015-02-23T00:00:00.000Z",
+          "DestinationAddress": {
+            "City": "SAN FRANCISCO",
+            "StateOrProvinceCode": "CA",
+            "CountryCode": "US",
+            "CountryName": "United States",
+            "Residential": false
+          },
+          "ActualDeliveryTimestamp": "2015-03-02T08:00:00.000Z",
+          "ActualDeliveryAddress": {
+            "City": "SAN FRANCISCO",
+            "StateOrProvinceCode": "CA",
+            "CountryCode": "US",
+            "CountryName": "United States",
+            "Residential": false
+          },
+          "DeliveryAttempts": "0",
+          "TotalUniqueAddressCountInConsolidation": "0",
+          "NotificationEventsAvailable": [
+            "ON_DELIVERY"
+          ],
+          "DeliveryOptionEligibilityDetails": [
+            {
+              "Option": "INDIRECT_SIGNATURE_RELEASE",
+              "Eligibility": "INELIGIBLE"
+            },
+            {
+              "Option": "REDIRECT_TO_HOLD_AT_LOCATION",
+              "Eligibility": "INELIGIBLE"
+            },
+            {
+              "Option": "REROUTE",
+              "Eligibility": "INELIGIBLE"
+            },
+            {
+              "Option": "RESCHEDULE",
+              "Eligibility": "INELIGIBLE"
+            }
+          ],
+          "Events": [
+            {
+              "Timestamp": "2015-03-02T18:42:00.000Z",
+              "EventType": "DL",
+              "EventDescription": "Delivered",
+              "StatusExceptionCode": "A5",
+              "StatusExceptionDescription": "Package delivered by U.S. Postal Service to addressee",
+              "Address": {
+                "City": "SAN FRANCISCO",
+                "StateOrProvinceCode": "CA",
+                "PostalCode": "94107",
+                "CountryCode": "US",
+                "CountryName": "United States",
+                "Residential": false
+              },
+              "ArrivalLocation": "DELIVERY_LOCATION"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

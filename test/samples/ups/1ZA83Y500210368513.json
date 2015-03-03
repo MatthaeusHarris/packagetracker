@@ -1,0 +1,277 @@
+{
+  "Response": {
+    "ResponseStatusCode": "1",
+    "ResponseStatusDescription": "Success"
+  },
+  "Shipment": {
+    "Shipper": {
+      "ShipperNumber": "A83Y50",
+      "Address": {
+        "AddressLine1": "4400 12TH STREET EXT",
+        "City": "WEST COLUMBIA",
+        "StateProvinceCode": "SC",
+        "PostalCode": "29172   3300",
+        "CountryCode": "US"
+      }
+    },
+    "ShipTo": {
+      "Address": {
+        "City": "SAN FRANCISCO",
+        "StateProvinceCode": "CA",
+        "PostalCode": "941072007",
+        "CountryCode": "US"
+      }
+    },
+    "ShipmentWeight": {
+      "UnitOfMeasurement": {
+        "Code": "LBS"
+      },
+      "Weight": "2.70"
+    },
+    "Service": {
+      "Code": "002",
+      "Description": "2ND DAY AIR"
+    },
+    "ReferenceNumber": {
+      "Code": "01",
+      "Value": "249292133"
+    },
+    "ShipmentIdentificationNumber": "1ZA83Y500210368513",
+    "PickupDate": "20150226",
+    "DeliveryDateUnavailable": {
+      "Type": "Scheduled Delivery",
+      "Description": "Scheduled Delivery Date is not currently available, please try back later"
+    },
+    "Package": {
+      "TrackingNumber": "1ZA83Y500210368513",
+      "Activity": [
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "SAN FRANCISCO",
+              "StateProvinceCode": "CA",
+              "PostalCode": "94107",
+              "CountryCode": "US"
+            },
+            "Code": "M3",
+            "Description": "FRONT DESK",
+            "SignedForByName": "DOUDNA"
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "D",
+              "Description": "DELIVERED"
+            },
+            "StatusCode": {
+              "Code": "KB"
+            }
+          },
+          "Date": "20150302",
+          "Time": "094700"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "SAN FRANCISCO",
+              "StateProvinceCode": "CA",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "OUT FOR DELIVERY"
+            },
+            "StatusCode": {
+              "Code": "DS"
+            }
+          },
+          "Date": "20150302",
+          "Time": "070800"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "SAN FRANCISCO",
+              "StateProvinceCode": "CA",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "ARRIVAL SCAN"
+            },
+            "StatusCode": {
+              "Code": "AR"
+            }
+          },
+          "Date": "20150302",
+          "Time": "070000"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "OAKLAND",
+              "StateProvinceCode": "CA",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "DEPARTURE SCAN"
+            },
+            "StatusCode": {
+              "Code": "DP"
+            }
+          },
+          "Date": "20150302",
+          "Time": "061000"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "OAKLAND",
+              "StateProvinceCode": "CA",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "OUT FOR DELIVERY"
+            },
+            "StatusCode": {
+              "Code": "DS"
+            }
+          },
+          "Date": "20150302",
+          "Time": "030000"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "DALLAS/FT. WORTH A/P",
+              "StateProvinceCode": "TX",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "DEPARTURE SCAN"
+            },
+            "StatusCode": {
+              "Code": "DP"
+            }
+          },
+          "Date": "20150228",
+          "Time": "164200"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "DALLAS/FT. WORTH A/P",
+              "StateProvinceCode": "TX",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "ARRIVAL SCAN"
+            },
+            "StatusCode": {
+              "Code": "AR"
+            }
+          },
+          "Date": "20150228",
+          "Time": "120600"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "WEST COLUMBIA",
+              "StateProvinceCode": "SC",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "DEPARTURE SCAN"
+            },
+            "StatusCode": {
+              "Code": "DP"
+            }
+          },
+          "Date": "20150227",
+          "Time": "195900"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "City": "WEST COLUMBIA",
+              "StateProvinceCode": "SC",
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "I",
+              "Description": "ORIGIN SCAN AT CUSTOMER LOCATION"
+            },
+            "StatusCode": {
+              "Code": "OC"
+            }
+          },
+          "Date": "20150226",
+          "Time": "160400"
+        },
+        {
+          "ActivityLocation": {
+            "Address": {
+              "CountryCode": "US"
+            }
+          },
+          "Status": {
+            "StatusType": {
+              "Code": "M",
+              "Description": "BILLING INFORMATION RECEIVED"
+            },
+            "StatusCode": {
+              "Code": "MP"
+            }
+          },
+          "Date": "20150226",
+          "Time": "160707"
+        }
+      ],
+      "PackageWeight": {
+        "UnitOfMeasurement": {
+          "Code": "LBS"
+        },
+        "Weight": "2.70"
+      },
+      "ReferenceNumber": [
+        {
+          "Code": "01",
+          "Value": "FN3-4803584-3695831"
+        },
+        {
+          "Code": "01",
+          "Value": "DDLTDWMJK"
+        },
+        {
+          "Code": "01",
+          "Value": "NA"
+        },
+        {
+          "Code": "01",
+          "Value": "UPS-SCCAH-T001SC4NVT  UPST887019 UP"
+        }
+      ]
+    }
+  }
+}
