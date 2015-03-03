@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('longjohn');
 var debug = require('debug')('packagetracker');
 var app = require('../app');
 var cron = require('../lib/cron');
