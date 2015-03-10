@@ -36,11 +36,19 @@ app.use(session({
     resave: true
 }));
 
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(logger('combined'));
 
+app.use(require('csurf')());
+
+app.use(function(req, res, next) {
+    res.locals._csrfToken = req.csrfToken();
+    next();
+});
 app.use(function(req, res, next) {
     res.locals.flash = req.session.flash;
     delete req.session.flash;

@@ -26,6 +26,8 @@ router.get('/packages', auth.ensureAuthenticated, function(req, res) {
             } else {
                 for(var package in data) {
                     data[package].trackingLink = packageUtils.buildTrackingLink(data[package]);
+                    data[package].latestEvent = packageUtils.parseTrackingInfo(data[package], data[package].lastResponse);
+                    data[package].deliveryEstimate = packageUtils.getDeliveryEstimate(data[package]);
                 }
                 res.render('packages', {packages: data, csrf: 'blarg'});
             }
