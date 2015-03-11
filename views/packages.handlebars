@@ -73,6 +73,7 @@
                 $.ajax({
                     url: '/package/' + this.id,
                     method: 'DELETE',
+                    data: { '_csrf': '{{ _csrfToken }}' },
                     success: function(data) {
                         row.detach();
                     },
