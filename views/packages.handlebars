@@ -39,21 +39,21 @@
 
 <table class="table table-striped table-bordered table-hover">
     <tr>
-        <th>Carrier</th>
+        <!--<th>Carrier</th>-->
         <th>Description</th>
         <th>Status</th>
-        <th>Delivery Date</th>
+        <th>Estimated Delivery Date</th>
         <th>Info</th>
         <th>&nbsp;</th>
     </tr>
     {{#each packages}}
         <tr>
-            <td>{{carrier}}</td>
+            <!--<td>{{carrier}}</td>-->
             <td><a href="{{trackingLink}}">{{description}}</a></td>
             <!--<td><a href="{{trackingLink}}">{{trackingNumber}}</a></td>-->
             <td>{{ latestEvent }}</td>
             <td>{{{ deliveryEstimate }}}</td>
-            <td><a href="/package/{{_id}}">Info</a></td>
+            <td><a href="/package/{{_id}}">Info</a><br />({{carrier}})</td>
             <td>
                 <a class="btn btn-danger remove-package-button" href="#" id="{{_id}}">
                     &times;
