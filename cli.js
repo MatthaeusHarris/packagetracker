@@ -22,6 +22,6 @@ module.exports = {
                 fs.writeFileSync('./test/samples/' + carrier.toLowerCase() + '/' + trackingNumber + '.json', JSON.stringify(data, null, '    '));
                 console.log('done');
             }
-        })
+        });
     }
 };
