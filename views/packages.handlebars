@@ -51,7 +51,7 @@
             <!--<td>{{carrier}}</td>-->
             <td><a href="{{trackingLink}}">{{description}}</a></td>
             <!--<td><a href="{{trackingLink}}">{{trackingNumber}}</a></td>-->
-            <td>{{ latestEvent }}</td>
+            <td>{{ latestEvent }}<div class="lastUpdated">As of {{timestamps.lastUpdated}}</div></td>
             <td>{{{ deliveryEstimate }}}</td>
             <td class="hidden-sm hidden-xs"><a href="/package/{{_id}}">Info</a><br />({{carrier}})</td>
             <td>

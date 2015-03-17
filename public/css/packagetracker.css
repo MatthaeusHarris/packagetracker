@@ -6,3 +6,8 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+
+.lastUpdated {
+    font-size: x-small;
+    display: block;
+}
