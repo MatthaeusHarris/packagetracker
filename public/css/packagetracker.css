@@ -11,3 +11,25 @@ body {
     font-size: x-small;
     display: block;
 }
+
+.revision {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.revision .byline {
+    width: 100%;
+    font-size: smaller;
+}
+
+.revision .date {
+
+}
+
+.revision .author {
+
+}
+
+.revision .subject {
+    display: block;
+}

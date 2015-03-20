@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 text-left">
         <h1>About</h1>
         <p>
             PackageTracker is, as the name suggests, a service to track your in-transit packages.
@@ -21,5 +21,23 @@
         <p>
             Feedback may be sent to <a href="mailto:matthaeus.harris@gmail.com">matthaeus.harris@gmail.com</a>.
         </p>
+    </div>
+
+    <div class="col-md-12 text-left">
+        <h1>Revision History</h1>
+        <ul>
+            {{#each log}}
+                <li>
+                    <div class="revision">
+                        <span class="subject">{{subject}}</span>
+                        <span class="byline">
+                            <span class="date">{{authorDate}}</span>
+                            <span class="by">by</span>
+                            <span class="author">{{authorName}}</span>
+                        </span>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
     </div>
 </div>
