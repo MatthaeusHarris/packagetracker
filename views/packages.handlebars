@@ -49,11 +49,11 @@
     {{#each packages}}
         <tr>
             <!--<td>{{carrier}}</td>-->
-            <td><a href="{{trackingLink}}">{{description}}</a></td>
+            <td><a href="{{trackingLink}}" target="_blank">{{description}}</a></td>
             <!--<td><a href="{{trackingLink}}">{{trackingNumber}}</a></td>-->
             <td>{{ latestEvent }}<div class="lastUpdated">As of {{timestamps.lastUpdated}}</div></td>
             <td>{{{ deliveryEstimate }}}</td>
-            <td class="hidden-sm hidden-xs"><a href="/package/{{_id}}">Info</a><br />({{carrier}})</td>
+            <td class="hidden-sm hidden-xs"><a href="/package/{{_id}}" target="_blank">Info</a><br />({{carrier}})</td>
             <td>
                 <a class="btn btn-danger remove-package-button" href="#" id="{{_id}}">
                     &times;

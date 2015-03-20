@@ -10,7 +10,8 @@ var packageUtils = require('../lib/package');
 
 router.get('/packages', auth.ensureAuthenticated, function(req, res) {
     var query = {
-        userId: req.user.authId
+        userId: req.user.authId,
+        'flags.hidden': false
     };
     Package.find(query, function(err, data) {
         if (err) {
@@ -96,7 +97,12 @@ router.delete('/package/:id', auth.ensureAuthenticated, function(req, res) {
         _id: req.params.id,
         userId: req.user.authId
     };
-    Package.find(query).remove(function(err, data) {
+    var update = {
+        flags: {
+            hidden: true
+        }
+    };
+    Package.findOneAndUpdate(query, update, function(err, data) {
         if (req.xhr || req.accepts('json,html') === 'json') {
             if (err) {
                 res.status(500);
