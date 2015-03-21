@@ -157,7 +157,7 @@ router.get('/map', auth.ensureAuthenticated, function(req, res) {
                         longitude: data[package].currentLocation.geoInfo[0].longitude
                     };
                 } else {
-                    delete data[package];
+                    data.splice(package, 1);
                 }
             }
             res.render('map', {packages: data, mapsApiKey: credentials.apiKeys.googleMaps});
