@@ -151,10 +151,14 @@ router.get('/map', auth.ensureAuthenticated, function(req, res) {
             res.render('500', {error: err});
         } else {
             for(var package in data) {
-                data[package].location = {
-                    latitude: data[package].currentLocation.geoInfo[0].latitude,
-                    longitude: data[package].currentLocation.geoInfo[0].longitude
-                };
+                if (data[package].currentLocation) {
+                    data[package].location = {
+                        latitude: data[package].currentLocation.geoInfo[0].latitude,
+                        longitude: data[package].currentLocation.geoInfo[0].longitude
+                    };
+                } else {
+                    delete data[package];
+                }
             }
             res.render('map', {packages: data, mapsApiKey: credentials.apiKeys.googleMaps});
         }
