@@ -150,17 +150,21 @@ router.get('/map', auth.ensureAuthenticated, function(req, res) {
         if (err) {
             res.render('500', {error: err});
         } else {
+            var packages = {};
             for(var package in data) {
                 if (data[package].currentLocation) {
-                    data[package].location = {
-                        latitude: data[package].currentLocation.geoInfo[0].latitude,
-                        longitude: data[package].currentLocation.geoInfo[0].longitude
+                    packages[package] = {
+                        _id: data[package]._id,
+                        description: data[package].description,
+                        location: {
+                            latitude: data[package].currentLocation.geoInfo[0].latitude,
+                            longitude: data[package].currentLocation.geoInfo[0].longitude
+                        }
                     };
-                } else {
-                    data.splice(package, 1);
                 }
             }
-            res.render('map', {packages: data, mapsApiKey: credentials.apiKeys.googleMaps});
+            console.log(packages);
+            res.render('map', {packages: packages, mapsApiKey: credentials.apiKeys.googleMaps});
         }
     });
 });
