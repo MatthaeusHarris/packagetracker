@@ -7,6 +7,7 @@ var auth = require('../lib/auth');
 var Package = require('../models/package');
 var flash = require('../lib/flash');
 var packageUtils = require('../lib/package');
+var credentials = require('../credentials');
 
 router.get('/packages', auth.ensureAuthenticated, function(req, res) {
     var query = {
@@ -30,7 +31,7 @@ router.get('/packages', auth.ensureAuthenticated, function(req, res) {
                     data[package].latestEvent = packageUtils.parseTrackingInfo(data[package], data[package].lastResponse);
                     data[package].deliveryEstimate = packageUtils.getDeliveryEstimate(data[package]);
                 }
-                res.render('packages', {packages: data, csrf: 'blarg'});
+                res.render('packages', {packages: data});
             }
         }
     });
@@ -135,6 +136,27 @@ router.get('/package/:id', auth.ensureAuthenticated, function(req, res) {
             res.header('content-type', 'text/plain');
             res.send(JSON.stringify(data, null, '    '));
             res.end();
+        }
+    });
+});
+
+router.get('/map', auth.ensureAuthenticated, function(req, res) {
+    var query = {
+        userId: req.user.authId,
+        'flags.hidden': false
+    };
+
+    Package.find(query, function(err, data) {
+        if (err) {
+            res.render('500', {error: err});
+        } else {
+            for(var package in data) {
+                data[package].location = {
+                    latitude: data[package].currentLocation.geoInfo[0].latitude,
+                    longitude: data[package].currentLocation.geoInfo[0].longitude
+                };
+            }
+            res.render('map', {packages: data, mapsApiKey: credentials.apiKeys.googleMaps});
         }
     });
 });

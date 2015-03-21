@@ -1,0 +1,40 @@
+<div id="map-canvas"></div>
+
+{{#section 'header'}}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ mapsApiKey }}">
+    </script>
+{{/section}}
+
+{{#section 'jquery'}}
+    <script type="text/javascript">
+        var packages = {};
+        {{#each packages}}
+            packages["{{_id}}"] = {
+                location: {
+                    latitude: {{location.latitude}},
+                    longitude: {{location.longitude}}
+                },
+                description: "{{description}}"
+            };
+        {{/each}}
+
+        function initialize() {
+            var mapOptions = {
+                center: { lat: 39.156, lng: 263.808 },
+                zoom: 4
+            };
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            globalMap = map;
+            for (var packageId in packages) {
+                var pos = new google.maps.LatLng(packages[packageId].location.latitude, packages[packageId].location.longitude);
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: packages[packageId].description
+                });
+            }
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+{{/section}}

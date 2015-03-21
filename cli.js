@@ -4,7 +4,10 @@
 var packageApi = require('./lib/package');
 var credentials = require('./credentials');
 var fs = require('fs');
+var mongoose = require('mongoose');
 
+var uri = 'mongodb://localhost/packagetracker';
+mongoose.connect(uri);
 
 module.exports = {
     packageApi: packageApi,

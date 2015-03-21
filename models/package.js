@@ -25,7 +25,8 @@ var packageSchema = mongoose.Schema({
         update: Boolean,
         hidden: Boolean
     },
-    lastResponse: Object
+    lastResponse: Object,
+    currentLocation: Object
 });
 
 packageSchema.index({"carrier": 1});
