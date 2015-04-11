@@ -12,7 +12,8 @@ var githubInstance = new githubApi({
     version: '3.0.0'
 });
 
-router.get('/ci/hook/update', function(req, res) {
+router.post('/ci/hook/update', function(req, res) {
+    console.log(req.body);
     githubInstance.repos.getCommits({
         user: "MatthaeusHarris",
         repo: "packagetracker"
