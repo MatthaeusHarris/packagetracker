@@ -46,6 +46,12 @@ router.post('/ci/hook/update', function(req, res) {
                     });
                 });
             });
+            child_process.exec('env', function(err, stdout, stderr) {
+                console.log("ENV DUMP");
+                console.log(stdout);
+                console.log(stderr);
+                console.log("END ENV DUMP");
+            });
         } else {
             res.json({'status': 'ok'});
         }
