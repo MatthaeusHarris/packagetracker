@@ -28,6 +28,7 @@
     "serve-favicon": "^2.2.0",
     "shipping-fedex": "git+https://github.com/MatthaeusHarris/node-shipping-fedex.git",
     "shipping-ups": "^0.4.26",
-    "shipping-usps": "0.0.3"
+    "shipping-usps": "0.0.3",
+    "node-github": "0.0.3"
   }
 }
