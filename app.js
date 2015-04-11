@@ -43,6 +43,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(logger('combined'));
 
+//This must go above the csurf injection because github doesn't use csrf tokens
+app.use(require('./routes/ci'));
+
 app.use(require('csurf')());
 
 app.use(function(req, res, next) {
@@ -62,7 +65,7 @@ auth.registerRoutes(app);
 app.use(require('./routes/index'));
 app.use(require('./routes/user'));
 app.use(require('./routes/package'));
-app.use(require('./routes/ci'));
+
 
 app.use(function(req, res) {
     res.status(404);
