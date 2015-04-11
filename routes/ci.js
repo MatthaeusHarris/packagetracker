@@ -25,32 +25,18 @@ router.post('/ci/hook/update', function(req, res) {
         if (data[0].sha !== gitlog.log[0].hash) {
             // We need to update
             console.log("CI update hook triggered.  Fetching updates");
-            child_process.exec('git pull', function(err, stdout, stderr) {
+            child_process.exec('bin/update.sh', function(err, stdout, stderr) {
                 if (err) {
                     console.log(stderr);
                     return res.render('500', [err, stdout, stderr].join('\n'));
                 }
                 console.log(stdout);
                 console.log(stderr);
-                console.log("Installing any new libraries");
-                child_process.exec('npm install', function(err, stdout, stderr) {
-                    if (err) {
-                        console.log(stderr);
-                        return res.render('500', [err, stdout, stderr].join('\n'))
-                    }
-                    console.log(stdout);
-                    console.error(stderr);
-                    process.nextTick(function() {
-                        console.log("Process exiting to restart after CI chain trigger");
-                        process.exit(0);
-                    });
+                process.nextTick(function() {
+                    console.log("Process exiting to restart after CI chain trigger");
+                    process.exit(0);
                 });
-            });
-            child_process.exec('env', function(err, stdout, stderr) {
-                console.log("ENV DUMP");
-                console.log(stdout);
-                console.log(stderr);
-                console.log("END ENV DUMP");
+
             });
         } else {
             res.json({'status': 'ok'});
